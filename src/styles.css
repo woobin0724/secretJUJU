@@ -1,0 +1,451 @@
+:root {
+  --bg: #141414;
+  --card: #222222;
+  --ink: #f3ede2;
+  --sub: #9a948c;
+  --pink: #ff4f79;
+  --fade: 0.6s;
+  --serif: 'Noto Serif KR', 'Apple SD Gothic Neo', serif;
+  --sans: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+.serif {
+  font-family: var(--serif);
+  font-weight: 600;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade {
+  animation: fade var(--fade) ease both;
+}
+
+/* ---------- 청중 화면 ---------- */
+
+.stage {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.backdrop,
+.backdrop img,
+.backdrop video,
+.backdrop .veil {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.backdrop {
+  animation: fade var(--fade) ease both;
+}
+
+.backdrop img,
+.backdrop video {
+  object-fit: cover;
+}
+
+.backdrop video {
+  opacity: 0;
+  transition: opacity var(--fade) ease;
+}
+
+.backdrop video.on {
+  opacity: 1;
+}
+
+.backdrop .veil {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.panel {
+  position: relative;
+  /* 밝은 배경 영상 위에서도 글자가 읽히도록 */
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.65);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: max(20px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) max(28px, env(safe-area-inset-bottom))
+    max(24px, env(safe-area-inset-left));
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 44px;
+}
+
+.mid {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.center {
+  text-align: center;
+  align-items: center;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 64px;
+}
+
+.bottom.center {
+  justify-content: flex-end;
+}
+
+.label {
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dots i {
+  width: 22px;
+  height: 3px;
+  background: rgba(243, 237, 226, 0.3);
+}
+
+.dots i.on {
+  background: var(--ink);
+}
+
+.title {
+  font-size: clamp(28px, 8vw, 36px);
+  line-height: 1.4;
+  text-wrap: balance;
+}
+
+.question,
+.lead {
+  font-size: clamp(26px, 7.2vw, 32px);
+  line-height: 1.5;
+  text-wrap: balance;
+}
+
+.accent {
+  color: var(--pink);
+}
+
+.motto {
+  font-size: 16px;
+  letter-spacing: 0.3em;
+  color: var(--ink);
+}
+
+.note {
+  font-size: 16px;
+  color: #cfc9bf;
+}
+
+.btn {
+  text-shadow: none;
+  display: block;
+  width: 100%;
+  min-height: 64px;
+  padding: 12px 20px;
+  border: 1px solid rgba(243, 237, 226, 0.28);
+  border-radius: 6px;
+  background: var(--card);
+  color: var(--ink);
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    opacity 0.2s;
+}
+
+.btn:active,
+.btn.picked {
+  border-color: var(--pink);
+}
+
+.btn.picked {
+  background: #2c2226;
+}
+
+.btn:disabled:not(.picked) {
+  opacity: 0.45;
+}
+
+.btn.primary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+
+.btn:focus-visible,
+.link:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 2px;
+}
+
+/* 섬 */
+.island-top {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #d8d2c8;
+  text-align: center;
+  width: 100%;
+}
+
+.count {
+  font-family: var(--serif);
+  font-size: 44px;
+  line-height: 64px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+/* 계급 판정 */
+.slot {
+  transition: opacity 0.5s ease;
+}
+
+.slot.out {
+  opacity: 0;
+}
+
+.chip {
+  text-shadow: none;
+  display: inline-block;
+  min-width: 190px;
+  padding: 18px 28px;
+  border-radius: 4px;
+  font-family: var(--serif);
+  font-size: 38px;
+  font-weight: 600;
+  color: #141414;
+  border: 1px solid transparent;
+}
+
+.chip.caste-epsilon {
+  color: var(--ink);
+  border-color: rgba(243, 237, 226, 0.7);
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+}
+
+.stagger {
+  animation: fade var(--fade) ease both;
+}
+
+.s2 {
+  animation-delay: 1.2s;
+}
+
+.s3 {
+  animation-delay: 2.4s;
+}
+
+.s4 {
+  animation-delay: 3.2s;
+}
+
+/* 입국 승인 도장 */
+@keyframes stamp {
+  0% {
+    opacity: 0;
+    transform: rotate(-9deg) scale(2.6);
+  }
+  70% {
+    opacity: 1;
+    transform: rotate(-9deg) scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-9deg) scale(1);
+  }
+}
+
+.stamp {
+  text-shadow: none;
+  background: rgba(20, 20, 20, 0.35);
+  padding: 14px 30px;
+  border: 5px double var(--pink);
+  border-radius: 8px;
+  color: var(--pink);
+  font-family: var(--serif);
+  font-size: 44px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  transform: rotate(-9deg);
+  animation: stamp 0.4s cubic-bezier(0.3, 0, 0.4, 1) both;
+}
+
+/* 출국 */
+.compare {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--pink);
+}
+
+.credit {
+  font-size: 13px;
+  color: #cfc9bf;
+  text-align: center;
+  width: 100%;
+}
+
+/* 공통 표시 */
+.demo-badge {
+  position: fixed;
+  right: 8px;
+  bottom: 6px;
+  z-index: 20;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--sub);
+  pointer-events: none;
+}
+
+.offline {
+  position: fixed;
+  top: max(8px, env(safe-area-inset-top));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  max-width: calc(100% - 24px);
+  padding: 6px 14px;
+  border-radius: 4px;
+  background: var(--card);
+  border: 1px solid rgba(243, 237, 226, 0.25);
+  font-size: 13px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+/* 가로로 돌린 휴대폰 */
+@media (orientation: landscape) and (max-height: 520px) {
+  .panel {
+    max-width: 860px;
+    padding-top: max(10px, env(safe-area-inset-top));
+    padding-bottom: max(12px, env(safe-area-inset-bottom));
+  }
+  .mid {
+    gap: 10px;
+  }
+  .title,
+  .question,
+  .lead {
+    font-size: 26px;
+    line-height: 1.35;
+  }
+  .bottom.two {
+    flex-direction: row;
+  }
+  .island-top {
+    font-size: 13px;
+  }
+  .count {
+    font-size: 30px;
+    line-height: 40px;
+  }
+  .bottom {
+    min-height: 40px;
+  }
+  .bottom .btn {
+    min-height: 64px;
+  }
+  .chip {
+    font-size: 30px;
+    padding: 10px 24px;
+  }
+  .result {
+    gap: 8px;
+  }
+}
+
+/* 아주 좁은 휴대폰 */
+@media (max-width: 359px) {
+  .panel {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade,
+  .backdrop,
+  .stagger,
+  .stamp {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+  }
+  .slot,
+  .btn,
+  .backdrop video {
+    transition: none !important;
+  }
+}
