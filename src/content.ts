@@ -1,0 +1,138 @@
+import type { Phase, QuestionId } from './types';
+
+/** 앱에 나오는 모든 문구. 문구를 바꾸려면 이 파일만 고친다. */
+export const TEXT = {
+  waiting: {
+    title: '세계국가에 오신 것을 환영합니다',
+    motto: '공동체 · 동일성 · 안정',
+    note: '잠시 후 입국 심사가 시작됩니다.',
+  },
+  arrival: {
+    body: '입국 심사를 시작합니다. 네 가지 질문에 답해 주십시오.',
+    start: '심사 시작',
+  },
+  progress: (n: number, total: number) => `심사 ${n}/${total}`,
+  questions: {
+    q1: '나는 언제나 행복하고 싶다',
+    q2: '고민 없이 편하게 살고 싶다',
+    q3: '남들과 같으면 마음이 놓인다',
+    q4: '버튼 하나로 평생 슬픔이 사라진다면, 누르시겠습니까?',
+  } as Record<QuestionId, string>,
+  /** 발표 화면 막대에 쓰는 짧은 이름 */
+  questionShort: {
+    q1: '언제나 행복하고 싶다',
+    q2: '고민 없이 편하게 살고 싶다',
+    q3: '남들과 같으면 마음이 놓인다',
+    q4: '슬픔을 지우는 버튼을 누른다',
+  } as Record<QuestionId, string>,
+  choices: {
+    q1: { yes: '예', no: '아니오' },
+    q2: { yes: '예', no: '아니오' },
+    q3: { yes: '예', no: '아니오' },
+    q4: { yes: '누른다', no: '누르지 않는다' },
+  } as Record<QuestionId, { yes: string; no: string }>,
+  island: {
+    top: "신세계는 이런 공간을 '섬'이라 부르고, 이곳에 오는 사람을 추방했습니다.",
+    thanks: '생각해 주셔서 감사합니다. 이 10초는 소마가 없는 시간이었습니다.',
+    questions: {
+      q1: {
+        yes: '슬픔이 없으면, 기쁨이 기쁨인 줄 알 수 있습니까?',
+        no: '그럼 오늘 당신을 불행하게 한 일도 지키고 싶습니까?',
+      },
+      q2: {
+        yes: '마지막으로 오래 고민해서 내린 결정은 무엇이었습니까?',
+        no: '고민은 누가 대신해 주지 않습니다. 정말 감당할 수 있습니까?',
+      },
+      q3: {
+        yes: '방금 그 답, 옆 사람을 보고 고르지 않았습니까?',
+        no: '남들과 다른 생각을 마지막으로 말해 본 건 언제입니까?',
+      },
+      q4: {
+        yes: '그 슬픔 속에 있던 사람들도 함께 지워집니다. 그래도 누르시겠습니까?',
+        no: '존은 불행해질 권리를 요구했고, 결국 무너졌습니다. 그래도 고르시겠습니까?',
+      },
+    } as Record<QuestionId, { yes: string; no: string }>,
+  },
+  caste: {
+    title: '당신의 계급을 판정합니다',
+    names: { alpha: '알파', beta: '베타', gamma: '감마', delta: '델타', epsilon: '엡실론' } as Record<string, string>,
+    result1: '당신의 계급은 정해지지 않았습니다.',
+    result2: '그것은 당신이 고르는 것입니다.',
+    note: '신세계에서는 태어나기 전에 정해집니다.',
+    next: '입국 도장 받기',
+  },
+  stamp: { label: '입국 승인' },
+  lobby: {
+    approved: '발표가 끝나면 재심사가 있습니다.',
+    closed: '심사가 마감되었습니다. 발표가 끝나면 재심사가 있습니다.',
+    soloBody: '시간이 흘렀습니다. 같은 질문을 한 번 더 받겠습니다.',
+    soloNext: '재심사 받기',
+  },
+  recheck: {
+    question: '다시 묻겠습니다. 버튼 하나로 평생 슬픔이 사라진다면, 누르시겠습니까?',
+    label: '재심사',
+  },
+  exit: {
+    compare: (first: string, now: string) => `처음: ${first} → 지금: ${now}`,
+    title: '하나라도 망설이셨다면, 출국을 환영합니다.',
+    credit: '시크릿쥬쥬 · 『멋진 신세계』 독서멘토링',
+  },
+  system: {
+    loading: '입국장으로 이동하는 중입니다.',
+    offline: '연결이 불안정합니다. 다시 연결하는 중입니다.',
+    noConfigTitle: '서버 설정이 아직 없습니다.',
+    noConfig: '데모 모드로 실행하려면 주소 끝에 ?demo=1',
+    authError: '서버에 로그인하지 못했습니다. 잠시 후 새로고침해 주십시오.',
+    demo: 'DEMO',
+  },
+  screen: {
+    scan: '휴대폰 카메라로 QR을 찍어 입국 심사를 받아 주세요',
+    counts: (online: number, answered: number) => `접속 ${online}명 · 응답 ${answered}명`,
+    round1Title: '입국 심사',
+    round2Title: '재심사',
+    empty: '아직 응답이 없습니다',
+    yesLabel: '예',
+    people: (n: number) => `${n}명 응답`,
+    closedLabel: '버튼을 누른다',
+    before: '처음',
+    after: '지금',
+  },
+  admin: {
+    title: '진행자 제어',
+    email: '이메일',
+    password: '비밀번호',
+    login: '로그인',
+    logout: '로그아웃',
+    loginFail: '로그인하지 못했습니다. 이메일과 비밀번호를 확인해 주십시오.',
+    notAdmin: '진행자 계정이 아닙니다.',
+    current: '현재 단계',
+    phaseNames: {
+      waiting: '대기 (QR 안내)',
+      round1: '1라운드 진행 중',
+      closed1: '1라운드 마감',
+      round2: '재심사 진행 중',
+      ended: '종료',
+    } as Record<Phase, string>,
+    nextLabels: {
+      waiting: '1라운드 열기',
+      round1: '1라운드 닫기',
+      closed1: '재심사 열기',
+      round2: '종료',
+      ended: null,
+    } as Record<Phase, string | null>,
+    back: '이전 단계로 되돌리기',
+    online: '접속',
+    round1: '1라운드 응답',
+    round2: '재심사 응답',
+    q4Preview: 'Q4 누른다',
+    reset: '전체 초기화',
+    resetConfirm1: '정말 초기화합니까?',
+    resetConfirm1Body: '모든 응답과 단계가 지워집니다.',
+    resetConfirm2: 'INIT 입력',
+    resetWord: 'INIT',
+    cancel: '취소',
+    proceed: '계속',
+    doReset: '초기화',
+    failed: '요청을 처리하지 못했습니다.',
+  },
+};

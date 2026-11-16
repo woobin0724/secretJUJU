@@ -1,0 +1,168 @@
+/* 진행자 화면: 휴대폰 세로 기준, 큰 버튼 */
+.admin {
+  min-height: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: max(16px, env(safe-area-inset-top)) 20px max(28px, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.admin header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 44px;
+}
+
+.admin h1 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.admin-card {
+  background: var(--card);
+  border-radius: 8px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.admin .k {
+  font-size: 13px;
+  color: var(--sub);
+}
+
+.admin-card.phase {
+  gap: 4px;
+}
+
+.admin-card.phase strong {
+  font-family: var(--serif);
+  font-size: 30px;
+  line-height: 1.3;
+}
+
+.admin .btn.next {
+  min-height: 96px;
+  font-size: 26px;
+  background: var(--pink);
+  border-color: var(--pink);
+  color: #141414;
+}
+
+.admin .link {
+  background: none;
+  border: 0;
+  padding: 12px 8px;
+  min-height: 44px;
+  color: var(--sub);
+  font-size: 15px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+
+.admin .link:disabled,
+.admin .btn:disabled {
+  opacity: 0.5;
+}
+
+.admin .back {
+  align-self: center;
+}
+
+.admin .danger-link {
+  align-self: center;
+  margin-top: 12px;
+  color: var(--pink);
+}
+
+.admin-card.stats {
+  flex-direction: row;
+}
+
+.admin-card.stats > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.admin-card.stats strong {
+  font-size: 30px;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.admin .accent {
+  color: var(--pink);
+}
+
+.admin label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--sub);
+}
+
+.admin input,
+.dialog input {
+  min-height: 52px;
+  padding: 0 14px;
+  border-radius: 6px;
+  border: 1px solid rgba(243, 237, 226, 0.28);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 17px;
+}
+
+.admin-error {
+  color: var(--pink);
+  font-size: 14px;
+}
+
+.dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.dialog {
+  width: 100%;
+  max-width: 400px;
+  background: var(--card);
+  border-radius: 10px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.dialog h2 {
+  font-size: 20px;
+}
+
+.dialog p {
+  color: var(--sub);
+  font-size: 15px;
+}
+
+.dialog-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.dialog .btn.danger {
+  background: var(--pink);
+  border-color: var(--pink);
+  color: #141414;
+}

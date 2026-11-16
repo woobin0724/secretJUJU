@@ -1,0 +1,290 @@
+/* 발표 화면: 1920×1080 기준. --u 는 화면 높이의 1%(가로가 좁으면 16:9 에 맞춰 줄어든다). */
+.screen {
+  --u: min(1vh, 0.5625vw);
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  padding: calc(4 * var(--u)) calc(6 * var(--u));
+  font-size: calc(3.2 * var(--u));
+  line-height: 1.4;
+}
+
+.screen-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  height: calc(6 * var(--u));
+  flex: none;
+}
+
+.screen .brand {
+  letter-spacing: 0.3em;
+  color: var(--sub);
+  font-size: calc(3 * var(--u));
+}
+
+.screen .counts {
+  font-size: calc(3.2 * var(--u));
+  font-variant-numeric: tabular-nums;
+}
+
+.screen-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen .qr {
+  background: var(--ink);
+  border-radius: calc(1 * var(--u));
+  overflow: hidden;
+  flex: none;
+}
+
+.screen .qr.big {
+  width: calc(54 * var(--u));
+  height: calc(54 * var(--u));
+}
+
+.screen .qr.small {
+  width: calc(30 * var(--u));
+  height: calc(30 * var(--u));
+}
+
+.screen .url {
+  font-size: calc(3.4 * var(--u));
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+
+.screen .url.small {
+  font-size: calc(3 * var(--u));
+  color: var(--sub);
+  max-width: calc(44 * var(--u));
+}
+
+.s-waiting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(2.2 * var(--u));
+}
+
+.s-waiting .scan {
+  font-size: calc(4 * var(--u));
+  font-weight: 700;
+}
+
+.s-split {
+  display: flex;
+  align-items: center;
+  gap: calc(8 * var(--u));
+  width: 100%;
+}
+
+.s-split aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(2 * var(--u));
+  flex: none;
+}
+
+.bars {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: calc(2.6 * var(--u));
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: calc(4 * var(--u));
+}
+
+.bar-num {
+  width: calc(36 * var(--u));
+  flex: none;
+  text-align: right;
+}
+
+.screen .pct {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: calc(15 * var(--u));
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.screen .pct small {
+  font-size: 0.45em;
+  margin-left: 0.08em;
+}
+
+.screen .pct.dim {
+  color: var(--sub);
+}
+
+.screen .pct.huge {
+  font-size: calc(40 * var(--u));
+}
+
+.screen .pct.large {
+  font-size: calc(30 * var(--u));
+}
+
+.screen .accent {
+  color: var(--pink);
+}
+
+.bar-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: calc(1 * var(--u));
+}
+
+.bar-label {
+  font-size: calc(3.6 * var(--u));
+  font-weight: 700;
+}
+
+.bar-track {
+  height: calc(3.4 * var(--u));
+  background: var(--card);
+  border-radius: calc(0.6 * var(--u));
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: var(--ink);
+  border-radius: 0 calc(0.6 * var(--u)) calc(0.6 * var(--u)) 0;
+  transition: width 0.5s ease;
+}
+
+.bar-meta {
+  font-size: calc(3 * var(--u));
+  color: var(--sub);
+  font-variant-numeric: tabular-nums;
+}
+
+.bars.one {
+  gap: calc(3 * var(--u));
+}
+
+.bars.one .bar-fill {
+  background: var(--pink);
+}
+
+.screen .tag {
+  font-size: calc(3.2 * var(--u));
+  letter-spacing: 0.2em;
+  color: var(--pink);
+}
+
+.recheck-q {
+  font-size: calc(5 * var(--u));
+  line-height: 1.4;
+  text-wrap: balance;
+  margin-bottom: calc(3 * var(--u));
+}
+
+.s-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(2 * var(--u));
+  text-align: center;
+}
+
+.big-label {
+  font-size: calc(6 * var(--u));
+  font-weight: 700;
+}
+
+.screen .meta {
+  font-size: calc(3.6 * var(--u));
+  color: var(--sub);
+}
+
+.screen .empty {
+  font-size: calc(4.4 * var(--u));
+  color: var(--sub);
+}
+
+.s-ended {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(2.4 * var(--u));
+  text-align: center;
+  width: 100%;
+}
+
+.versus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(9 * var(--u));
+}
+
+.versus > div:not(.arrow) {
+  min-width: calc(56 * var(--u));
+}
+
+.versus .arrow {
+  width: calc(10 * var(--u));
+  height: calc(0.5 * var(--u));
+  background: var(--sub);
+  position: relative;
+  margin-top: calc(9 * var(--u));
+}
+
+.versus .arrow::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: calc(2.4 * var(--u));
+  height: calc(2.4 * var(--u));
+  border-top: calc(0.5 * var(--u)) solid var(--sub);
+  border-right: calc(0.5 * var(--u)) solid var(--sub);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.versus-caption {
+  font-size: calc(3.4 * var(--u));
+  color: var(--sub);
+}
+
+.farewell {
+  font-size: calc(5.4 * var(--u));
+  margin-top: calc(2 * var(--u));
+}
+
+.screen .demo-badge {
+  font-size: calc(1.4 * var(--u));
+}
+
+.screen .offline {
+  font-size: calc(2.4 * var(--u));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar-fill {
+    transition: none;
+  }
+}

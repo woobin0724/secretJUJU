@@ -1,0 +1,53 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "state": {
+      ".read": true,
+      ".write": "auth != null && auth.token.email === 'admin@example.com'",
+      ".validate": "newData.hasChildren(['phase', 'updatedAt'])",
+      "phase": {
+        ".validate": "newData.isString() && newData.val().matches(/^(waiting|round1|closed1|round2|ended)$/)"
+      },
+      "updatedAt": { ".validate": "newData.isNumber()" },
+      "$other": { ".validate": false }
+    },
+    "responses": {
+      ".read": "auth != null",
+      ".write": "auth != null && auth.token.email === 'admin@example.com' && !newData.exists()",
+      "round1": {
+        "$uid": {
+          "at": {
+            ".write": "auth != null && auth.uid === $uid && root.child('state/phase').val() === 'round1'",
+            ".validate": "newData.isNumber()"
+          },
+          "$q": {
+            ".write": "auth != null && auth.uid === $uid && root.child('state/phase').val() === 'round1' && !data.exists() && newData.exists()",
+            ".validate": "$q.matches(/^q[1-4]$/) && newData.isBoolean()"
+          }
+        }
+      },
+      "round2": {
+        "$uid": {
+          "at": {
+            ".write": "auth != null && auth.uid === $uid && root.child('state/phase').val() === 'round2'",
+            ".validate": "newData.isNumber()"
+          },
+          "$q": {
+            ".write": "auth != null && auth.uid === $uid && root.child('state/phase').val() === 'round2' && !data.exists() && newData.exists()",
+            ".validate": "$q === 'q4' && newData.isBoolean()"
+          }
+        }
+      },
+      "$other": { ".validate": false }
+    },
+    "presence": {
+      ".read": true,
+      ".write": "auth != null && auth.token.email === 'admin@example.com' && !newData.exists()",
+      "$uid": {
+        ".write": "auth != null && auth.uid === $uid",
+        ".validate": "newData.val() === true"
+      }
+    }
+  }
+}
