@@ -29,8 +29,8 @@ npm run dev
 
 브라우저에서 아래 두 주소를 **두 탭으로** 엽니다. Firebase 설정이 없어도 됩니다.
 
-- `http://localhost:5173/brave-new-world/#/?demo=1` (청중 화면. 창을 휴대폰 크기로 줄이면 좋습니다)
-- `http://localhost:5173/brave-new-world/#/screen?demo=1` (발표 화면)
+- `http://localhost:5173/secretJUJU/#/?demo=1` (청중 화면. 창을 휴대폰 크기로 줄이면 좋습니다)
+- `http://localhost:5173/secretJUJU/#/screen?demo=1` (발표 화면)
 
 > 지시서의 `http://localhost:5173/#/?demo=1` 로 들어가도 Vite 가 위 주소를 안내합니다. 하위 경로 없이 쓰려면 `.env.local` 에 `VITE_BASE=/` 를 넣습니다.
 
@@ -76,11 +76,11 @@ npm run dev
 
 ## 3. GitHub Pages 배포
 
-1. GitHub 계정 `woobin0724` 에 `brave-new-world` 저장소를 만들고 이 코드를 `main` 브랜치로 올립니다. (저장소 이름이 다르면 워크플로가 그 이름을 하위 경로로 자동 사용합니다.)
+1. 코드는 GitHub 저장소 `woobin0724/secretJUJU` 의 `main` 브랜치에 있습니다. (워크플로는 저장소 이름을 하위 경로로 자동 사용합니다.)
 2. **Settings > Secrets and variables > Actions > New repository secret** 으로 `.env.local` 과 같은 이름·값 6개를 등록합니다: `VITE_FIREBASE_API_KEY`, `VITE_FIREBASE_AUTH_DOMAIN`, `VITE_FIREBASE_DATABASE_URL`, `VITE_FIREBASE_PROJECT_ID`, `VITE_FIREBASE_APP_ID`, `VITE_ADMIN_EMAIL`.
 3. **Settings > Pages > Build and deployment > Source** 를 **GitHub Actions** 로 바꿉니다.
 4. `main` 에 푸시하면 `.github/workflows/deploy.yml` 이 린트·테스트·빌드 후 자동 배포합니다.
-5. 주소: `https://woobin0724.github.io/brave-new-world/` (발표 화면은 끝에 `#/screen`, 진행자는 `#/admin`).
+5. 주소: `https://woobin0724.github.io/secretJUJU/` (발표 화면은 끝에 `#/screen`, 진행자는 `#/admin`).
 
 ## 4. 발표 당일 체크리스트
 

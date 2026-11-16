@@ -176,8 +176,8 @@ describe('주소 처리', () => {
   });
 
   it('QR 주소는 쿼리를 뺀 청중 경로이고 ?qr= 로 덮어쓸 수 있다', () => {
-    const base = { origin: 'https://woobin0724.github.io', pathname: '/brave-new-world/' };
-    expect(audienceUrl({ ...base, search: '', hash: '#/screen?demo=1' })).toBe('https://woobin0724.github.io/brave-new-world/#/');
+    const base = { origin: 'https://woobin0724.github.io', pathname: '/secretJUJU/' };
+    expect(audienceUrl({ ...base, search: '', hash: '#/screen?demo=1' })).toBe('https://woobin0724.github.io/secretJUJU/#/');
     expect(audienceUrl({ ...base, search: '', hash: '#/screen?qr=https%3A%2F%2Fex.kr%2Fa' })).toBe('https://ex.kr/a');
   });
 });

@@ -54,4 +54,4 @@
 - Playwright 는 이 환경에 설치된 브라우저에 맞춰 1.63.0 으로 고정했다.
 
 ## 저장소
-- 작업은 `woobin0724/secretJUJU` 의 `claude/blissful-curie-auoixr` 브랜치에 올렸다. 배포 워크플로는 `main` 푸시에만 동작하고, 하위 경로는 저장소 이름을 따라간다(로컬 기본값은 `/brave-new-world/`).
+- 작업은 `woobin0724/secretJUJU` 의 `claude/blissful-curie-auoixr` 브랜치에 올렸다. 배포 워크플로는 `main` 푸시에만 동작하고, 하위 경로는 저장소 이름을 따라간다(로컬 기본값은 `/secretJUJU/`).

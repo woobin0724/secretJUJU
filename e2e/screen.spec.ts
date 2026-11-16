@@ -35,7 +35,7 @@ test('발표 화면: 키보드로 모든 단계를 넘긴다', async ({ page }) 
   await expect(page.getByText('휴대폰 카메라로 QR을 찍어 입국 심사를 받아 주세요')).toBeVisible();
   const qr = await page.locator('.qr.big').boundingBox();
   expect(qr!.width).toBeGreaterThanOrEqual(520);
-  await expect(page.locator('.url')).toHaveText('localhost:4173/brave-new-world/');
+  await expect(page.locator('.url')).toHaveText('localhost:4173/secretJUJU/');
   await expect(page.getByTestId('counts')).toContainText('응답 0명');
   await check(page, 'p01-waiting');
 
