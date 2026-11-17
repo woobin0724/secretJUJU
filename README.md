@@ -57,7 +57,7 @@ npm run dev
    | `VITE_FIREBASE_APP_ID` | `appId` |
    | `VITE_ADMIN_EMAIL` | 4번에서 만든 진행자 이메일 |
 
-6. **`database.rules.json` 의 진행자 이메일을 바꿉니다.** 파일 안에 `admin@example.com` 이 **세 군데** 있습니다. 세 곳 모두 4번의 진행자 이메일(소문자)로 바꿉니다. 바꾸지 않으면 진행자가 단계를 넘길 수 없습니다.
+6. **`database.rules.json` 의 진행자 이메일을 확인합니다.** 지금은 `admin@secretjuju.com` 이 **세 군데** 들어 있습니다. 진행자 계정을 다른 이메일로 만들었다면 세 곳 모두(소문자로) 바꾸고, `VITE_ADMIN_EMAIL` 도 같은 값으로 맞춥니다. 다르면 진행자가 단계를 넘길 수 없습니다.
 7. 규칙을 배포합니다. 둘 중 한 가지 방법을 씁니다.
    - 콘솔: **Realtime Database > 규칙** 탭에 `database.rules.json` 내용을 그대로 붙여 넣고 **게시**.
    - CLI:
