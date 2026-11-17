@@ -52,3 +52,16 @@ export const SCENES = {
   exit: 'scene-5-exit',
 } as const;
 export type SceneKey = keyof typeof SCENES;
+
+/** 장면별 소리(public/media 의 같은 이름 .mp3). 기본은 꺼짐이고 청중 화면에서만 쓴다. */
+export const SOUND = {
+  volume: 0.6,
+  fadeMs: 500,
+  /** 반복하지 않고 한 번만 재생하는 장면 */
+  once: ['exit'] as SceneKey[],
+  storageKey: 'bnw:sound',
+};
+
+export function soundLoops(scene: SceneKey): boolean {
+  return !SOUND.once.includes(scene);
+}

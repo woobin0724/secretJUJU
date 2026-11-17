@@ -77,6 +77,7 @@ export const TEXT = {
     title: '하나라도 망설이셨다면, 출국을 환영합니다.',
     credit: '시크릿쥬쥬 · 『멋진 신세계』 독서멘토링',
   },
+  sound: { on: '소리 켜기', off: '소리 끄기' },
   system: {
     loading: '입국장으로 이동하는 중입니다.',
     offline: '연결이 불안정합니다. 다시 연결하는 중입니다.',

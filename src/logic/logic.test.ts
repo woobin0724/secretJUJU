@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { DEMO, ISLAND_AFTER } from '../config';
+import { DEMO, ISLAND_AFTER, SCENES, SOUND, soundLoops, type SceneKey } from '../config';
 import { TEXT } from '../content';
 import { audienceUrl, urlParams } from '../mode';
 import type { Answers, Phase, ResponseMap } from '../types';
@@ -179,5 +179,15 @@ describe('주소 처리', () => {
     const base = { origin: 'https://woobin0724.github.io', pathname: '/secretJUJU/' };
     expect(audienceUrl({ ...base, search: '', hash: '#/screen?demo=1' })).toBe('https://woobin0724.github.io/secretJUJU/#/');
     expect(audienceUrl({ ...base, search: '', hash: '#/screen?qr=https%3A%2F%2Fex.kr%2Fa' })).toBe('https://ex.kr/a');
+  });
+});
+
+describe('소리 설정', () => {
+  it('출국 장면만 한 번 재생하고 나머지는 반복한다', () => {
+    const scenes = Object.keys(SCENES) as SceneKey[];
+    expect(scenes.filter((s) => !soundLoops(s))).toEqual(['exit']);
+    expect(soundLoops('city')).toBe(true);
+    expect(SOUND.volume).toBe(0.6);
+    expect(SOUND.fadeMs).toBe(500);
   });
 });

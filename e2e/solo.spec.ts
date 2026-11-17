@@ -20,7 +20,7 @@ test('혼자 해보기: 매 문항 뒤 섬, 서버 호출 없음, 재심사·출
     await page.getByRole('button', { name: pick, exact: true }).click();
     await expect(page.locator('.stage')).toHaveAttribute('data-step', `island:${q}`);
     await expect(page.getByTestId('island-text')).toHaveText(expected);
-    await expect(page.getByRole('button')).toHaveCount(0);
+    await expect(page.getByRole('button')).toHaveCount(1); // 소리 버튼뿐
     await page.waitForTimeout(5000);
     await expect(page.locator('.stage')).toHaveAttribute('data-step', `island:${q}`); // 아직 건너뛸 수 없다
   };
