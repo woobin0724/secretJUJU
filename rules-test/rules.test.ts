@@ -12,7 +12,7 @@ const update = (r: Ref, v: object) => r.update(v);
 const remove = (r: Ref) => r.remove();
 
 // 실행: npm run test:rules  (Firebase 에뮬레이터 안에서 돈다)
-const ADMIN = 'admin@example.com';
+const ADMIN = 'admin@secretjuju.com';
 let env: RulesTestEnvironment;
 
 const user = (uid: string) => env.authenticatedContext(uid).database();
