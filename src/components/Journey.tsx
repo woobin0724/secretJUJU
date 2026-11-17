@@ -5,6 +5,7 @@ import { prefersReducedMotion } from '../hooks';
 import { deriveStep, EMPTY_PROGRESS, hasAnyAnswer, pickIslandQuestion, stepKey, type Progress, type Step } from '../logic/flow';
 import { QUESTION_IDS, type Answers, type FlowMode, type Phase, type QuestionId } from '../types';
 import { Backdrop, preloadScene } from './Backdrop';
+import { SoundToggle } from './SoundToggle';
 
 const PROGRESS_KEY = 'bnw:progress';
 
@@ -125,6 +126,7 @@ export function Journey({ mode, phase, mine, onAnswer, onRecheck }: Props) {
         )}
         {step.kind === 'exit' && <Exit first={mine.round1.q4} now={mine.round2.q4} />}
       </main>
+      <SoundToggle scene={scene} />
     </div>
   );
 }

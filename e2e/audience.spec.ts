@@ -48,7 +48,9 @@ test('청중 화면: 대기 → 1라운드 → 섬 → 계급 판정 → 대기 
   const islandStart = Date.now();
   await expect(page.getByText("신세계는 이런 공간을 '섬'이라 부르고, 이곳에 오는 사람을 추방했습니다.")).toBeVisible();
   await expect(page.getByTestId('island-text')).toHaveText('그 슬픔 속에 있던 사람들도 함께 지워집니다. 그래도 누르시겠습니까?');
-  await expect(page.getByRole('button')).toHaveCount(0);
+  // 버튼은 소리 켜기/끄기 하나뿐이고, 눌러도 섬을 건너뛸 수 없다
+  await expect(page.getByRole('button')).toHaveCount(1);
+  await expect(page.getByRole('button', { name: '소리 켜기' })).toBeVisible();
   await expect(page.getByRole('link')).toHaveCount(0);
   await expectFits(page);
   await shot(page, 'm05-island');
